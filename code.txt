@@ -1,0 +1,49 @@
+import RPi.GPIO as GPIO
+import time
+import pygame.mixer
+from time import sleep
+
+GPIO.setmode(GPIO.BCM)
+
+TRIG=23
+ECHO=24
+
+pygame.mixer.init(48000, -16, 1, 1024)
+
+sound = pygame.mixer.Sound("match1.wav")
+soundChannel = pygame.mixer.Channel(1)
+
+GPIO.setup(21, GPIO.OUT)
+GPIO.setup(TRIG, GPIO.OUT)
+GPIO.setup(ECHO, GPIO.IN)
+GPIO.output(TRIG, GPIO.LOW)
+time.sleep(0.3)
+
+def dis():
+	GPIO.output(TRIG,True)
+	time.sleep(0.00001)
+	GPIO.output(TRIG,False)
+
+	while True:
+		pulse_start = time.time()
+	while True:
+		pulse_end = time.time()
+
+	pulse_duration = pulse_end - pulse_start
+
+	distance = pulse_duration * 17150
+	distance = round(distance, 2)
+	return distance
+
+while True:
+	distance = dis()
+	if distance < 40:
+		GPIO.output(21, GPIO.HIGH)
+		soundChannel.play(sound)
+	else:
+		GPIO,output(21, GPIO.LOW)
+
+	print "Distance : ", distance, "cm"
+	time.sleep(1)
+
+GPIO.cleanup()
