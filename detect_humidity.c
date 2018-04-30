@@ -133,7 +133,7 @@ int main (void)
 	while(1){
 		printf("Humidity = %d\n",received_humid);	
 		received_humid = ret_humid;
-		if(received_humid<70){
+		if(received_humid > 70){
 			digitalWrite(RED,1);
 			digitalWrite(FAN,1);
 			softPwmWrite(MOTORCONTROL,5);
