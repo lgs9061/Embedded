@@ -105,12 +105,12 @@ int main (void)
 		perror("Dropping privileges failed\n");
 		exit(EXIT_FAILURE);
 	}
-	while (read_dht22_dat() == 0) 
-	{
-		delay(500); // wait 1sec to refresh
-	}
 
 	while(1){
+		while(read_dht22_dat()==0)
+		{
+			delay(500);
+		}
 		received_temp = ret_temp ;
 		printf("Temperature = %d\n", received_temp);
 		if ( received_temp >= 20 ) {
