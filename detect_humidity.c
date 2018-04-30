@@ -126,11 +126,10 @@ int main (void)
 		perror("Dropping privileges failed\n");
 		exit(EXIT_FAILURE);
 	}
-	while (read_dht22_dat() == 0) 
-	{
-		delay(500); // wait 1sec to refresh
-	}
+	
 	while(1){
+		while(read_dht22_dat()==0)
+			delay(500);	
 		printf("Humidity = %d\n",received_humid);	
 		received_humid = ret_humid;
 		if(received_humid > 70){
