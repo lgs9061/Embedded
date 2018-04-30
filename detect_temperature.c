@@ -113,7 +113,7 @@ int main (void)
 	while(1){
 		received_temp = ret_temp ;
 		printf("Temperature = %d\n", received_temp);
-		if ( received_temp >= 25 ) {
+		if ( received_temp >= 20 ) {
 			pinMode(PUMP, OUTPUT);
 			printf("PUMP ON!!\n");
 			digitalWrite (PUMP, 1);
