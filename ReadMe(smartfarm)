@@ -1,0 +1,6 @@
+조도 센서가 고장나 조도센서 값이 계속 0으로 읽혀 과제를 수행하는데 어려움이 있었습니다.
+dbthread, templthread, fanthread, ledthread 4개의 thread로 이루어져 있으며 
+tempthread에서 온도와 조도센서의 값을 읽어와 온도의 값이 25도 이상일 경우 fanthread로 넘어가 fan을 작동시키고, fan종료 후
+조도센서의 값이 850 이상일 경우 ledthread로 넘어가 led를 작동시키도록 구현하였습니다.
+
+youtube 주소 : https://youtu.be/VNVkt5sw7-k
